@@ -13,6 +13,14 @@ namespace AdressBook {
             editForm.IsVisible = false;
         }
         private void addNewEntry(object sender, EventArgs e) {
+            string surname = entrySurname.Text;
+            string tel = entryTel.Text;
+            if(!(string.IsNullOrEmpty(entryName.Text) || string.IsNullOrEmpty(entrySurname.Text) || string.IsNullOrEmpty(entryTel.Text))) {
+                DisplayAlert("Error", "Check if values are correct", "Ok");
+                return;
+            }
+                
+
             census.Add(
                 new personData {
                     FirstName = entryName.Text,
