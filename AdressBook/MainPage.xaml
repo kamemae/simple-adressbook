@@ -18,7 +18,7 @@
                 <Button Text="Edit user" Clicked="editUser" />
             </VerticalStackLayout>
 
-            <SearchBar Placeholder="ex. Jane Doe" x:Name="searchBar" MinimumWidthRequest="255" MaximumWidthRequest="512" SearchButtonPressed="Search" />
+            <SearchBar Placeholder="ex. Jane Doe" x:Name="searchBar" MinimumWidthRequest="255" MaximumWidthRequest="512" TextChanged="OnSearchBarTextChanged"/>
             <VerticalStackLayout x:Name="SearchList" MinimumWidthRequest="255" MaximumWidthRequest="512">
                 <ScrollView MinimumHeightRequest="255" MaximumHeightRequest="512">
                     <VerticalStackLayout>
@@ -43,7 +43,6 @@
                     </VerticalStackLayout>
                 </ScrollView>
             </VerticalStackLayout>
-
 
             <VerticalStackLayout MinimumWidthRequest="255" MaximumWidthRequest="512">
                 <CollectionView x:Name="AdressBook" SelectionMode="Single" SelectionChanged="AdressBook_SelectionChanged">
