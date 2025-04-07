@@ -18,8 +18,8 @@
                 <Button Text="Edit user" Clicked="editUser" />
             </VerticalStackLayout>
 
+            <SearchBar Placeholder="ex. Jane Doe" x:Name="searchBar" MinimumWidthRequest="255" MaximumWidthRequest="512" SearchButtonPressed="Search" />
             <VerticalStackLayout x:Name="SearchList" MinimumWidthRequest="255" MaximumWidthRequest="512">
-                <SearchBar Placeholder="ex. Jane Doe" x:Name="searchBar" MinimumWidthRequest="255" MaximumWidthRequest="512" SearchButtonPressed="Search" />
                 <ScrollView MinimumHeightRequest="255" MaximumHeightRequest="512">
                     <VerticalStackLayout>
                         <CollectionView x:Name="AdressBookSearch" SelectionMode="Single">

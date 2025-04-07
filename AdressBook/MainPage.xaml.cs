@@ -11,11 +11,12 @@ namespace AdressBook {
             AdressBookSearch.ItemsSource = searchResults;
             AdressBookSearch.BindingContext = searchResults;
             editForm.IsVisible = false;
+            SearchList.IsVisible = false;
         }
         private void addNewEntry(object sender, EventArgs e) {
             string surname = entrySurname.Text;
             string tel = entryTel.Text;
-            if(!(string.IsNullOrEmpty(entryName.Text) || string.IsNullOrEmpty(entrySurname.Text) || string.IsNullOrEmpty(entryTel.Text))) {
+            if(string.IsNullOrEmpty(entryName.Text) || string.IsNullOrEmpty(entrySurname.Text) || string.IsNullOrEmpty(entryTel.Text)) {
                 DisplayAlert("Error", "Check if values are correct", "Ok");
                 return;
             }
@@ -74,13 +75,14 @@ namespace AdressBook {
         }
 
         private void Search(object sender, EventArgs e) {
+            SearchList.IsVisible = true;
             string result = searchBar.Text.ToLower();
 
+            //szukaj syckiego
             searchResults.Clear();
             foreach(personData person in census) {
                 searchResults.Add(person);
             }
-
         }
     }
 }
