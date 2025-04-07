@@ -18,29 +18,32 @@
                 <Button Text="Edit user" Clicked="editUser" />
             </VerticalStackLayout>
 
-            <SearchBar Placeholder="ex. Jane Doe" x:Name="searchBar" MinimumWidthRequest="255" MaximumWidthRequest="512" SearchButtonPressed="Search" />
-            <ScrollView MinimumHeightRequest="255" MaximumHeightRequest="512" >
-                <VerticalStackLayout>
-                    <CollectionView x:Name="AdressBookSearch" SelectionMode="Single">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Border>
-                                    <Grid Padding="5,5,5,5">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Label Text="{Binding FirstName}" Grid.Row="0"/>
-                                        <Label Text="{Binding LastName}" Grid.Row="1"/>
-                                        <Label Text="{Binding Tel}" Grid.Row="2"/>
-                                    </Grid>
-                                </Border>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </VerticalStackLayout>
-            </ScrollView>
+            <VerticalStackLayout x:Name="SearchList" MinimumWidthRequest="255" MaximumWidthRequest="512">
+                <SearchBar Placeholder="ex. Jane Doe" x:Name="searchBar" MinimumWidthRequest="255" MaximumWidthRequest="512" SearchButtonPressed="Search" />
+                <ScrollView MinimumHeightRequest="255" MaximumHeightRequest="512">
+                    <VerticalStackLayout>
+                        <CollectionView x:Name="AdressBookSearch" SelectionMode="Single">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border>
+                                        <Grid Padding="5,5,5,5">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Label Text="{Binding FirstName}" Grid.Row="0"/>
+                                            <Label Text="{Binding LastName}" Grid.Row="1"/>
+                                            <Label Text="{Binding Tel}" Grid.Row="2"/>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </ScrollView>
+            </VerticalStackLayout>
+
 
             <VerticalStackLayout MinimumWidthRequest="255" MaximumWidthRequest="512">
                 <CollectionView x:Name="AdressBook" SelectionMode="Single" SelectionChanged="AdressBook_SelectionChanged">
