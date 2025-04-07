@@ -19,6 +19,7 @@ namespace AdressBook {
             editForm.IsVisible = false;
             SearchList.IsVisible = false;
         }
+
         private bool Validate(string tel) {
             Regex intvalidator = new Regex(@"[0-9]{9}");
             return !intvalidator.IsMatch(tel);
