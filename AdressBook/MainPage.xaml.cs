@@ -1,5 +1,5 @@
 ﻿using System.Collections.ObjectModel;
-
+using System.Text.RegularExpressions;
 namespace AdressBook {
     using MVVM.Models;
     public partial class MainPage : ContentPage {
@@ -19,13 +19,18 @@ namespace AdressBook {
             editForm.IsVisible = false;
             SearchList.IsVisible = false;
         }
+        private bool Validate(string tel) {
+            Regex intvalidator = new Regex(@"[0-9]{9}");
+            return !intvalidator.IsMatch(tel);
+        }
 
         private void addNewEntry(object sender, EventArgs e) {
             if(string.IsNullOrEmpty(entryName.Text) || string.IsNullOrEmpty(entrySurname.Text) || string.IsNullOrEmpty(entryTel.Text)) {
                 DisplayAlert("Error", "Check if values are correct", "Ok");
                 return;
             }
-
+            if(Validate($"{entryTel.Text}")) return;
+                
             census.Add(new personData {
                 FirstName = entryName.Text,
                 LastName = entrySurname.Text,
@@ -65,7 +70,7 @@ namespace AdressBook {
 
         private void editUser(object sender, EventArgs e) {
             if(index >= 0 && index < census.Count) {
-                var editedPerson = census[index];
+                dynamic editedPerson = census[index];
                 editedPerson.FirstName = editName.Text;
                 editedPerson.LastName = editSurname.Text;
                 editedPerson.Tel = editTel.Text;
