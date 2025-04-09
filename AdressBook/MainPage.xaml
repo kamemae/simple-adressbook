@@ -8,6 +8,7 @@
                 <Entry Placeholder="ex. Doe" x:Name="entrySurname" />
                 <Entry Placeholder="ex. 123456789" x:Name="entryTel" />
                 <Button Text="Add new user" Clicked="addNewEntry" />
+                <Label x:Name="addResult" TextColor="Red" />
             </VerticalStackLayout>
 
             <VerticalStackLayout x:Name="editForm" MinimumWidthRequest="255" MaximumWidthRequest="512">

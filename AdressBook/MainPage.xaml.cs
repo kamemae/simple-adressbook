@@ -78,6 +78,12 @@ namespace AdressBook {
 
                 census[index] = editedPerson;
 
+                AdressBook.ItemsSource = null;
+                AdressBook.BindingContext = null;
+
+                AdressBook.ItemsSource = census;
+                AdressBook.BindingContext = this;
+
                 editName.Text = "";
                 editSurname.Text = "";
                 editTel.Text = "";
