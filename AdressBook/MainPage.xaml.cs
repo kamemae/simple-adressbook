@@ -38,7 +38,7 @@ namespace AdressBook {
                 Tel = entryTel.Text
             });
 
-            entryName.Text = ""; entrySurname.Text = ""; entryTel.Text = "";
+            entryName.Text = ""; entrySurname.Text = ""; entryTel.Text = ""; searchBar.Text = "";
             entryName.Focus();
 
             SearchList.IsVisible = false;
@@ -105,11 +105,17 @@ namespace AdressBook {
                 SearchList.IsVisible = false;
                 AdressBook.IsVisible = true;
             } else {
+                List<personData> sortedResults = new List<personData>();
                 filteredResults = census.Where(person => person.FirstName.ToLower().Contains(searchText) ||
                                                              person.LastName.ToLower().Contains(searchText) ||
                                                              person.Tel.ToLower().Contains(searchText));
 
-                foreach(var person in filteredResults) searchResults.Add(person);
+                foreach(var person in filteredResults) sortedResults.Add(person);
+                sortedResults = sortedResults.OrderBy(x => x.LastName).ThenBy(x => x.FirstName).ToList();
+
+                AdressBookSearch.BindingContext = sortedResults;
+                AdressBookSearch.ItemsSource = sortedResults;
+                
 
                 SearchList.IsVisible = true;
                 AdressBook.IsVisible = false;
